@@ -1,5 +1,6 @@
 //import stuff here?
 import java.text.DecimalFormat;
+import java.util.Scanner;
 //Your code here
     public class Car{
     private String carName;
@@ -36,14 +37,35 @@ import java.text.DecimalFormat;
         
     }
     public double calculateAverage(){
-        double average = gallonsUsed / milesDriven;
+        double average = milesDriven / gallonsUsed;
         average = Math.round(average * 10.0)/10.0; 
         return average;
     }
     public String toString(){
-        average = average * 100;
+        return carName + " averaged " + calculateAverage() + "m/g"; 
+    }
+}
+class CarTester{
+    public static Car addCar(){
+        Scanner scanner = new Scanner(System.in);
         
-        return carName + " averaged " + average + "m/g"; 
+        System.out.println("Please enter the car's name: ");
+        String name = scanner.nextLine();
+        
+        System.out.println("Please enter cars miles: ");
+        double miles = scanner.nextDouble();
+        
+        System.out.println("Please enter cars gallons: ");
+        double gallons = scanner.nextDouble();
+        
+        return new Car(name, miles, gallons);
+    }
+    public static void main (String[] args){
+        Car car1 = addCar();
+        System.out.println(car1.toString());
+        System.out.println("------NEXT CAR-------------------------------------------");
+        Car car2 = addCar();
+        System.out.println(car2.toString());
     }
 }
         
@@ -51,10 +73,20 @@ import java.text.DecimalFormat;
 //Paste console output below:
 /*
 
-Mushroom Cup Prix Racer Average Miles/Per Gallon
-Royale averaged: 31.8 m/g 
-Koopa King averaged: 10.3 m/g 
-Pipe Frame averaged: 20.1 m/g 
-Badwagon averaged: 14.6 m/g 
+Please enter the car's name: 
+honda civic
+Please enter cars miles: 
+234
+Please enter cars gallons: 
+100
+honda civic averaged 2.3m/g
+------NEXT CAR-------------------------------------------
+Please enter the car's name: 
+Toad Mobile
+Please enter cars miles: 
+13
+Please enter cars gallons: 
+7
+Toad Mobile averaged 1.9m/g
 
 */
